@@ -2,11 +2,11 @@ import math
 import numpy
 import matplotlib.pyplot as pp
 
-# Eulers metode
+# Eulers metode:
 def euler(y, time, dt, derivs):
     return dt*derivs(y)+y
 
-# Afledte funktion
+# Her er differentialligningen:
 def deriv(x, y):
     return x+y
 
