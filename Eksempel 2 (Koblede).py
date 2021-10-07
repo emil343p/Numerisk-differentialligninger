@@ -2,18 +2,18 @@ import math
 import numpy
 import matplotlib.pyplot as pp
 
-# Eksakt:
+# Her er den eksakte løsning:
 def rigtig(x):
     return (math.sqrt(6*(x**3) + 30))/3
 
-
+# Nu laves data til den eksakte løsning:
 x_rig = numpy.linspace(1, 100, 10000)
 y_rig = []
 for i in range(len(x_rig)):
     y_rig.append(rigtig(x_rig[i]))
 
 
-# Differentialligningerne
+# Differentialligningerne som skal løses defineres her:
 def y_prime(x):
     return x**2
 
@@ -25,7 +25,7 @@ def x_prime(y):
 def euler(y, time, dt, derivs):
     return dt*derivs(y)+y
 
-# Udregningerne
+# Her er udregningerne for den numeriske løsning af de koblede differentialligninger:
 x_euler = [1]
 y_euler = [2]
 dt = 100/1000000000
@@ -35,7 +35,8 @@ while x_euler[i] < 100:
     x_euler.append(x_euler[i]+dt*x_prime(y_euler[i]))
     i += 1
 
-# Grafen:
+    
+# Her er grafen lavet:
 pp.plot(x_rig, y_rig, 'r')
 pp.plot(x_euler, y_euler, 'g--')
 pp.legend(['Rigtig', 'Numerisk'])
